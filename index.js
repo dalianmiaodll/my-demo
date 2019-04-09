@@ -1,4 +1,6 @@
-var allData = null;
+var allData = null;//储存最新的请求回来的数据
+
+
 //切换导航条
 function changList() {
     $('.menu dl').on("click","dd",function (e) {
@@ -97,35 +99,6 @@ function delStudent(){
     })
 }
 
-function init(){
-    rendShow();
-    changList();
-    blindEvent();
-    addStudent();
-}
-function blindEvent (){
-    //绑定编辑事件
-    $(".edit").click(function (e){
-        var index = $(this).attr("data-index");
-        $(".cover").show();
-        console.log(333);
-        initEditform(allData[index]);
-    })
-    //绑定遮罩层事件
-    $(".cover").click(function () {
-        $('.cover').hide();
-    })
-    //阻止遮罩层上的编辑信息层的冒泡事件
-    $('#edit-student').click(function(event){
-        event.stopPropagation();
-    })
-    //绑定编提交辑事件
-    $('#edit-submit').off().click(function (e){
-        e.preventDefault();
-        editStudent();
-    })
-    delStudent();
-}
 //编辑学生信息
 function editStudent() {
     var editForm = document.getElementById('edit-student-form');
@@ -167,5 +140,39 @@ function initEditform(data) {
         }
     }
 }
-
+function blindEvent (){
+    //绑定编辑事件
+    $(".edit").click(function (e){
+        var index = $(this).attr("data-index");
+        $(".cover").show();
+        console.log(333);
+        initEditform(allData[index]);
+    })
+    //绑定遮罩层事件
+    $(".cover").click(function () {
+        $('.cover').hide();
+    })
+    //阻止遮罩层上的编辑信息层的冒泡事件
+    $('#edit-student').click(function(event){
+        event.stopPropagation();
+    })
+    //绑定编提交辑事件
+    $('#edit-submit').off().click(function (e){
+        e.preventDefault();
+        editStudent();
+    })
+    delStudent();
+}
+function init(){
+    rendShow();
+    changList();
+    blindEvent();
+    addStudent();
+}
 init();
+
+
+$('#tunPage').turnPage({
+    curPage:5,
+    allPage:10
+})

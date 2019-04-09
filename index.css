@@ -116,6 +116,15 @@ html,body,.wrapper{
 .student-list tbody .del:hover{
     background-color: #ee241d;
 }
+/*页码显示*/
+.student-list #tunPage{
+    position: absolute;
+    width: 100px;
+    bottom: 50px;
+    right: 200px;
+    color: #000;
+    background-color: red;
+}
 
 /*新增学生样式*/
 .content-right .add-student{
@@ -179,3 +188,4 @@ html,body,.wrapper{
 .wrapper .cover .edit-student .add-student-form{
     margin: 30px auto;
 }
+
