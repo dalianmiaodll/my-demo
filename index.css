@@ -1,0 +1,181 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #b3bcc5;
+    font-size: 14px;
+}
+html,body,.wrapper{
+    width: 100%;
+    height: 100%;
+}
+/*logo样式*/
+.wrapper .nav{
+    width: 100%;
+    height: 70px;
+    background-color: #354455;
+}
+.nav .nav-right{
+    width: 200px;
+    height: 100%;
+    line-height: 70px;
+    padding-left: 20px;
+}
+.nav .nav-right img{
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+.nav .nav-right span{
+    font-size: 16px;
+    color:#b3bcc5;
+}
+/* 左边管理列表样式*/
+.wrapper .content{
+    width: 100%;
+    height: calc(100% - 70px);
+    background-color: #eee;
+}
+.wrapper .content .content-left{
+    width: 200px;
+    height: 100%;
+    float: left;
+    background-color: #4d5e70;
+}
+
+.menu dl{
+    margin: 10px 0px 0px 8px;
+    overflow: hidden;
+}
+.menu dl dt{
+    font-weight: bold;
+   margin-left: 8px;
+}
+.menu dl dd,.menu dl dt{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+}
+.menu dl dd{
+    padding-left: 18px;
+}
+.menu dl dd:hover{
+    background-color: #b3bcc5;
+    color: #3c3f41;
+}
+.wrapper .content-left .menu .active{
+    background-color: #eee;
+    color: #3c3f41;
+}
+
+/*右边展示区样式*/
+.wrapper .content .content-right{
+    float: left;
+    height: 100%;
+    width: calc(100% - 200px);
+}
+.content-right .student-list{
+    display: block;
+}
+.content-right,.content-right table{
+    width: 100%;
+}
+.content-right .student-list tr{
+    width: 100%;
+}
+.student-list table th,.student-list table td{
+    min-width: 100px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+.student-list thead tr th{
+    color: #646987;
+
+}
+.student-list tbody tr td{
+    background-color: #fff;
+    color: #111;
+}
+.student-list tbody .edit{
+    color: white;
+    background-color: #4bb857;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+.student-list tbody .del{
+    color: white;
+    background-color: #ff1c29;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+.student-list tbody .edit:hover{
+    background-color: #16b825;
+}
+.student-list tbody .del:hover{
+    background-color: #ee241d;
+}
+
+/*新增学生样式*/
+.content-right .add-student{
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.add-student .add-student-form{
+    width: 300px;
+    margin: 150px auto;
+
+}
+.add-student-form div{
+    margin-top: 10px;
+}
+.add-student-form label{
+    display: inline-block;
+    width: 80px;
+    height: 19px;
+    text-align: right;
+    padding-right: 15px;
+}
+.add-student-form div span{
+    display: inline-block;
+
+    padding-left:5px;
+    padding-right: 25px;
+}
+.add-student-form .submit,.add-student-form .reset{
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 10px;
+}
+
+/*编辑学生列表样式*/
+.wrapper .cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgba(0,0,0,0.4);
+}
+.cover h3{
+    margin: 10px 0px 0px 10px;
+    font-size: 16px;
+    color: #111111;
+}
+.wrapper .cover .edit-student{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-150px,-150px);
+    width: 350px;
+    height: 350px;
+    background-color: #fff;
+}
+.wrapper .cover .edit-student .add-student-form{
+    margin: 30px auto;
+}
