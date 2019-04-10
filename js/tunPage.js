@@ -15,7 +15,7 @@
         if(this.curPage > 1){
             $(this.wrap).append($('<li class="pre-page">上一页</li>'));
         }else {
-            $(this.wrap).remove(".pre-page");
+            $(this.wrap).remove("pre-page");
         }
         //填充中间页
         if(this.curPage != 1 && this.curPage - 2 >1){
@@ -47,7 +47,7 @@
         if(this.curPage < this.allPage){
             $(this.wrap).append($('<li class="next-page">下一页</li>'));
         }else {
-            $(this.wrap).remove(".next-page");
+            $(this.wrap).remove("next-page");
         }
     }
     TurnPage.prototype.bindEvent = function (){
@@ -69,16 +69,29 @@
     TurnPage.prototype.fillCss = function(){
         $(".tab-number").css({
             float: "left",
-            width:"10px",
-            height:"10px",
-            backgroundColor:"yellow"
+            width:"20px",
+            height:"20px",
+            textAlign:'center'
+        });
+        $('.pre-page').css({
+            float: "left"
+        });
+        $('.next-page').css({
+            float: "left"
+        });
+        $('#tunPage span').css({
+            float: "left"
+        });
+        $('.cur-page').css({
+            backgroundColor: 'rgba(4,0,0,0.5)'
         })
     }
 
     TurnPage.prototype.changePage = function () {
         this.fillHTML();
+        this.fillCss();
         this.bindEvent();
-        this.callback();
+        this.callback(this.curPage);
     }
     $.fn.extend({
         turnPage:function (options){

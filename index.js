@@ -1,6 +1,6 @@
 var allData = null;//储存最新的请求回来的数据
-
-
+var everPage = 10;//每一页显示的信息条数
+var curPage = 1;
 //切换导航条
 function changList() {
     $('.menu dl').on("click","dd",function (e) {
@@ -20,11 +20,19 @@ function rendShow () {
         //dataType: 'jsonp' ,
         success:  function(msg){
             var str = JSON.parse(msg);
-            var oDiv ="";
             if(str.status == "success"){
                 allData = str.data;
-                str.data.forEach(function(ele,i){
-                    oDiv += "<tr>\
+               studentShow();
+            }
+        }
+    })
+}
+function studentShow(){
+    var oDiv ="";
+    var page = (curPage-1)*everPage;
+    var pageData = allData.slice(page,page+10);
+    pageData.forEach(function(ele,i){
+        oDiv += "<tr>\
                     <td>"+ele.sNo+"</td>\
                     <td>"+ele.name+"</td>\
                     <td>"+(ele.sex ? '女':'男')+"</td>\
@@ -37,14 +45,11 @@ function rendShow () {
                         <buttn class="btn del" data-index='+i+'>删除</buttn>\
                         </td>\
                         </tr>'
-                })
-                $('tbody').html(" ");
-                $(oDiv).appendTo($('tbody'));
-                blindEvent();
-            }
-        }
     })
-
+    $('tbody').html(" ");
+    $(oDiv).appendTo($('tbody'));
+    blindEvent();
+    pageShow();
 }
 //新增学生信息
 function addStudent() {
@@ -171,8 +176,16 @@ function init(){
 }
 init();
 
+function pageShow(){
+    var allPage = Math.ceil(allData.length / everPage);
+  //var curPage =;
 
-$('#tunPage').turnPage({
-    curPage:5,
-    allPage:10
-})
+    $('#tunPage').turnPage({
+        curPage:curPage,
+        allPage:allPage,
+        callback: function(page){
+            curPage = page;
+            studentShow();
+        }
+    })
+}
